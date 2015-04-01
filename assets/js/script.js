@@ -56,11 +56,12 @@
 
 		for (i = 0; i < times.length; i++) {
 
-			var hours = times[i].jstime.format('hh');
+			var ampm = times[i].jstime.format('a');
+			var hours = times[i].jstime.format('h');
 		    var mins = times[i].jstime.format('mm');
 		    var seconds = times[i].jstime.format('s');
 
-		    console.log(hours, mins, seconds);
+		    console.log(ampm, hours, mins, seconds);
 
 			var hands = [
 				{
@@ -79,7 +80,21 @@
 
 			for(j = 0; j < hands.length; j++) {
 
-				var elements = document.querySelectorAll('.time-zones__wrapper .' + times[i].jsclass + ' .' + hands[j].hand);
+				var elm = document.getElementById(times[i].jsclass)
+
+				if(ampm === 'am') {
+
+					elm.style.backgroundColor = "#B8E8FF";
+
+				}
+
+				else { 
+
+					elm.style.backgroundColor = "#AFD9ED";
+
+				}
+
+				var elements = document.querySelectorAll('.' + times[i].jsclass + ' .' + hands[j].hand);
 
 				for(c = 0; c < elements.length; c++) {
 
