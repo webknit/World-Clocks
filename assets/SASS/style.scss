@@ -111,106 +111,75 @@
 	- 5.0 -  EXAMPLE SECTION
 *********************************************/
 	
-	/* BASE TEMPLATE FILES (THESE CAN BE DELETED AND REPLACED WITH OWN STYLES)
-	
-	You can have a read of this article to understand the structure of the SASS.
-	http://www.shaneprendergast.co.uk/css/base-has-changed/
-	
-	Consider adding seperate partials for each section of a site header, footer, sidebar
-	http://smacss.com/
-	
-	See .example class below to understand how the media queries work
-	------------------------------------------ */
-	
-	.header {
-		background: $col-white;
-		padding: 1em;
-		text-align: center;
+.clock {
+	background-image: url(https://cssanimation.rocks/assets/images/posts/clocks/ios_clock.svg);
+	background-repeat: no-repeat;
+	height: 300px;
+	margin: 0 auto;
+	position: relative;
+	width: 300px;
+	&:after {
+		background: #000;
+		border-radius: 50%;
+		content: "";
+		height: 5%;
+		left: 50%;
+		position: absolute;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		width: 5%;
 	}
+	&__container {
+		bottom: 0;
+		left: 0;
+		position: absolute;
+		right: 0;
+		top: 0;
+		&--hours {
+			animation: rotate 43200s infinite linear;
+		}
+		&--mins {
+			animation: rotate 3600s infinite linear;
+		}
+		&--seconds {
+			animation: rotate 60s infinite linear;
+		}
+	}
+	&__hours {
+		background: #000;
+		height: 20%;
+		left: 48.75%;
+		position: absolute;
+		top: 30%;
+		transform-origin: 50% 100%;
+		width: 2.5%;
+	}
+	&__mins {
+		background: #000;
+		height: 40%;
+		left: 49%;
+		position: absolute;
+		top: 10%;
+		transform-origin: 50% 100%;
+		width: 2%;
+	}
+	&__seconds {
+		background: #000;
+		height: 45%;
+		left: 49.5%;
+		position: absolute;
+		top: 14%;
+		transform-origin: 50% 80%;
+		width: 1%;
+		z-index: 8;
+	}
+}
 
-	.intro {
-		background: $col-black;
-		padding: 5em 0;
-		text-align: center;
-		@include breakpoint(medium) {
-			padding: 10em 0;
-		}
-		h2 {
-			color: #ffffff;
-			margin: 0;
-			@include breakpoint(medium) {
-				font-size: 4.5em;
-			}	
-		}
+@keyframes rotate {
+	100% {
+		transform: rotateZ(360deg);
 	}
-	
-	.section {
-		.row {
-			border-bottom: 1px solid $col-black;
-			margin: 0.625em 0;
-			padding: 0.625em 0;
-			&:last-child {
-				border-bottom: none;
-			}
-		}
-	}
-	
-	.round-corner-box {
-		border: 1px solid $col-black;
-		border-radius: 5px;
-		margin: 5px 0 0.938em;
-		padding: 0.625em 0.938em;
-	}
-	
-	p.text-shadow {
-		text-shadow: 0 1px 1px #d8544b;
-	}
-	
-	.animate {
-		cursor: pointer;
-		&:hover {
-			color: $col-black;
-			@include transition(color, 1s, linear, 0s);
-		}
-	}
-
-	.grid .one_twelve, .grid .two_twelve, .grid .three_twelve, .grid .four_twelve, 
-	.grid .five_twelve, .grid .six_twelve, .grid .seven_twelve, .grid .eight_twelve, 
-	.grid .nine_twelve, .grid .ten_twelve, .grid .eleven_twelve, .grid .twelve_twelve {
-		background: $col-black;
-	    color: $col-white;
-	    height: 3.125em;
-	}
-	
-	.footer {
-		border-top: 1px solid rgba(0,0,0,0.1);
-		clear: both;
-		margin: 0.625em 0;
-		padding: 2em 0;
-		text-align: center;
-		p {
-			@include breakpoint(medium) {
-				margin: 0 auto 2em;
-				max-width: 60%;
-			}
-		}
-	}
-
-	.example {
-		color: red;
-		@include breakpoint(medium) {
-			color: yellow;
-		}
-		@include breakpoint(large) {
-			color: green;
-		}
-		@include breakpoint(retina) {
-			background: url(logo2x.jpg) no-repeat;
-			background-size: 212px 303px;
-		}
-	}
-	
-	/* BASE TEMPLATE STYLES END */
+}
 
 
 /*********************************************
