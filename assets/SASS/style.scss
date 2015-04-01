@@ -11,105 +11,13 @@
 		http://shaneprendergast.co.uk/css/a-guide-to-base/
 */
 
-
-/* - CONTENTS
--------------------------------------------------
-	- SASS modules ......................... 1.0.
-		- Compass .......................... 1.1.
-    	- Variables ........................ 1.2.
-    	- Functions .........................1.3.
-    	- Mixins ............................1.4.
-    - CSS Reset ............................ 2.0.
-    	- Main reset ........................2.1.
-    - SASS partials ........................ 3.0.
-    	- Vendor ............................3.1.
-    	- Base ............................. 3.2.
-    	- Buttons ...........................3.3.
-    	- Forms ............................ 3.4.
-    - Grids ................................ 4.0.
-    - Example section ...................... 5.0.
-    - @font-face ........................... 0.0.
-*/
-
-
-/*********************************************
-	- 1.0 -  SASS MODULES
-	The modules directory is reserved for Sass code that doesn't cause Sass to actually output CSS. 
-	Things like mixin declarations, functions, and variables.
-*********************************************/
-
-	/* - 1.1. - COMPASS
-	------------------------------------------ */
 	
-	@import "compass";
-
-
-	/* - 1.2. - COLOURS, GRADIENTS, TYPOGRAPHY
-	------------------------------------------ */
-	
-	@import "modules/_variables";
-
-
-	/* - 1.3. - FUNCTIONS
-	------------------------------------------ */
-
-	@import "modules/_functions";
+@import "modules/_variables";
+@import "modules/_mixins";
+@import "partials/_reset";
+@import "partials/_base";
 	
 	
-	/* - 1.4. - MIXINS
-	------------------------------------------ */
-
-	@import "modules/_mixins";
-	
-	
-/*********************************************
-	- 2.0 -  CSS RESET
-*********************************************/
-
-	/* - 2.1. - RESET INCLUDING HTML5
-	------------------------------------------ */
-	
-	@import "partials/_reset";
-	
-
-/*********************************************
-	- 3.0 -  SASS PARTIALS
-*********************************************/
-
-	/* - 3.1. - VENDOR
-	------------------------------------------ */
-
-	@import "partials/_vendor";
-	
-	
-	/* - 3.2. - BASE ELEMENTS, STRUCTURE, TYPOGRAPHY, LINKS
-	------------------------------------------ */
-	
-	@import "partials/_base";
-	
-	
-	/* - 3.3. - BUTTONS 
-	------------------------------------------ */
-	
-	@import "partials/_buttons";
-	
-	
-	/* - 3.4. - FORMS 
-	------------------------------------------ */
-	
-	@import "partials/_forms";
-
-
-/*********************************************
-	- 4.0 -  GRIDS
-*********************************************/
-
-	@import "partials/_grid";
-
-
-/*********************************************
-	- 5.0 -  EXAMPLE SECTION
-*********************************************/
 
 .am-pm {
 	margin: 0 auto 5em;
@@ -240,14 +148,6 @@
 		transform: rotateZ(360deg);
 	}
 }
-
-
-/*********************************************
-	- 0.0 -  @FONT-FACE
-*********************************************/
-	
-	@import "partials/_font-face";
-	
 
 
 

@@ -80,7 +80,7 @@
 
 			for(j = 0; j < hands.length; j++) {
 
-				var elm = document.getElementById(times[i].jsclass)
+				var elm = document.getElementById(times[i].jsclass);
 
 				if(ampm === 'am') {
 
