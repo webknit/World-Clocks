@@ -110,15 +110,52 @@
 /*********************************************
 	- 5.0 -  EXAMPLE SECTION
 *********************************************/
+
+.time-zones {
+	&__item {
+		background: #eeeff1;
+		display: inline-block;
+		max-width: 300px;
+		padding: 2em 2em 5em;
+		position: relative;
+		width: 100%;
+		@include breakpoint(medium) {
+			max-width: 300px;
+			width: 25%;
+		}
+	}
+	&__wrapper {
+		height: 0;
+		padding-bottom: 100%;
+		position: relative;
+		width: 100%;
+	}
+	&__title {
+		background: $col-white;
+		bottom: -5em;
+		font-size: 0.8em;
+		left: 0;
+		margin: 0 auto;
+		padding: 0.5em;
+		position: absolute;
+		right: 0;
+		text-align: center;
+		width: auto;
+	}
+}
 	
 .clock {
-	background-image: url(https://cssanimation.rocks/assets/images/posts/clocks/ios_clock.svg);
+	background-color: $col-white;
+	background-image: url(assets/img/face.png);
 	background-position: center;
 	background-repeat: no-repeat;
-	height: 300px;
-	margin: 3em auto;
-	position: relative;
-	width: 300px;
+	background-size: 90%;
+	border: 3px solid $col-clock-border;
+	border-radius: 50%;
+	height: 100%;
+	margin: 0 auto;
+	position: absolute;
+	width: 100%;
 	&:after {
 		background: #000;
 		border-radius: 50%;
@@ -140,14 +177,14 @@
 			animation: rotate 43200s infinite linear;
 		}
 		&--mins {
-			animation: rotate 3600s infinite steps(60);
+			transition: transform 0.3s cubic-bezier(.4,2.08,.55,.44);
 		}
 		&--seconds {
-			animation: rotate 60s infinite steps(60);
+			transition: transform 0.2s cubic-bezier(.4,2.08,.55,.44);
 		}
 	}
 	&__hours {
-		background: #000;
+		background: $col-clock-hands;
 		height: 20%;
 		left: 48.75%;
 		position: absolute;
@@ -156,7 +193,7 @@
 		width: 2.5%;
 	}
 	&__mins {
-		background: #000;
+		background: $col-clock-hands;
 		height: 40%;
 		left: 49%;
 		position: absolute;
@@ -165,7 +202,7 @@
 		width: 2%;
 	}
 	&__seconds {
-		background: #000;
+		background: $col-second-hand;
 		height: 45%;
 		left: 49.5%;
 		position: absolute;

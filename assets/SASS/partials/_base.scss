@@ -63,7 +63,9 @@
 		color: $col-header;
 		font-family: $header-font-family;
 		font-weight: $weight-header;
+		letter-spacing: 0.2em;
 		margin: 0 0 1em;
+		text-transform: uppercase;
 	}
 	
 	h1, .h1 {
