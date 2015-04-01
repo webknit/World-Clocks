@@ -113,9 +113,10 @@
 	
 .clock {
 	background-image: url(https://cssanimation.rocks/assets/images/posts/clocks/ios_clock.svg);
+	background-position: center;
 	background-repeat: no-repeat;
 	height: 300px;
-	margin: 0 auto;
+	margin: 3em auto;
 	position: relative;
 	width: 300px;
 	&:after {
@@ -139,10 +140,10 @@
 			animation: rotate 43200s infinite linear;
 		}
 		&--mins {
-			animation: rotate 3600s infinite linear;
+			animation: rotate 3600s infinite steps(60);
 		}
 		&--seconds {
-			animation: rotate 60s infinite linear;
+			animation: rotate 60s infinite steps(60);
 		}
 	}
 	&__hours {
