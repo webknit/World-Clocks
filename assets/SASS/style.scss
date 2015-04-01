@@ -132,13 +132,17 @@
 .time-zones {
 	&__item {
 		background: #eeeff1;
-		display: inline-block;
-		max-width: 300px;
+		border: 5px solid $col-white;
+		display: block;
+		float: left;
 		padding: 2em 2em 5em;
 		position: relative;
 		width: 100%;
 		@include breakpoint(medium) {
-			max-width: 300px;
+			max-width: 50%;
+			width: 50%;
+		}
+		@include breakpoint(large) {
 			width: 20%;
 		}
 	}
