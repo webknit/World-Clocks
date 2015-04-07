@@ -233,9 +233,6 @@
 
 	}
 
-	/*
-	* Move the second containers
-	*/
 	function moveSecondHands() {
 
 		var containers = document.querySelectorAll('.clock__container--seconds');
@@ -263,7 +260,5 @@
 		}, 1000);
 
 	}
-
-	//init();
 
 })();
