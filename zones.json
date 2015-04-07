@@ -3,30 +3,30 @@
 		"name": "London",
 		"id": "london",
 		"jsclass": "london",
-		"jstime": "moment.tz(now, 'Eire')"
+		"langcode": "Eire"	
 	},
 	{
 		"name": "New York",
 		"id": "new-york",
 		"jsclass": "new-york",
-		"jstime": "moment.tz(now, 'America/New_York')"
+		"langcode": "America/New_York"
 	},
 	{
 		"name": "Paris",
 		"id": "paris",
 		"jsclass": "paris",
-		"jstime": "moment.tz(now, 'Europe/Paris')"
+		"langcode": "Europe/Paris"
 	},
 	{
 		"name": "shanghai",
 		"id": "shanghai",
 		"jsclass": "shanghai",
-		"jstime": "moment.tz(now, 'Asia/Hong_Kong')"
+		"langcode": "Asia/Hong_Kong"
 	},
 	{
 		"name": "San Francisco",
 		"id": "san-fran",
 		"jsclass": "san-fran",
-		"jstime": "moment.tz(now, 'America/Los_Angeles')"
+		"langcode": "America/Los_Angeles"
 	}
 ]

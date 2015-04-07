@@ -1,60 +1,33 @@
 (function () {
 
-	time = [];
+	var jsonData;
+	var code = "";
+
+	$.ajax({
+	    url: 'zones.json',
+	    dataType: 'json',
+	    success: function(response) {
+
+	        jsonData = response;
+
+	        for(i = 0; i < jsonData.length; i++) {
+
+				code += "<li class='time-zones__item' id='" + jsonData[i].id + "'><div class='time-zones__wrapper'><div class='clock " + jsonData[i].jsclass + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + jsonData[i].name + "</h2></div></li>";
+
+			}
+
+			document.getElementById('test').innerHTML = code;
+
+	        init();
+	    }
+
+	});
 
 	function init() {
 
-		getData();
 		startInternationalClocks();
-		//startLocalClock();
 		moveSecondHands();
 		setUpMinuteHands();
-
-	}
-
-	function getData() {
-
-		var request = new XMLHttpRequest();
-
-		request.open('GET', 'zones.json', true);
-
-		request.onload = function() {
-
-		  if (request.status >= 200 && request.status < 400) {
-		    
-			arr = JSON.parse(request.responseText);
-
-			time = [];
-
-		    for(i = 0; i < arr.length; i++) {
-
-		    	code = "<li class='time-zones__item' id='" + arr[i].id + "'><div class='time-zones__wrapper'><div class='clock " + arr[i].jsclass + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + arr[i].name + "</h2></div></li>";
-		    	time.push(new getTimes(arr[i].jsclass, arr[i].jstime));
-
-		    }
-
-		    console.log(time);
-
-		    //document.getElementById('test').innerHTML = code;
-
-		  } else {
-		    // We reached our target server, but it returned an error
-
-		  }
-		};
-
-		request.onerror = function() {
-		  // There was a connection error of some sort
-		};
-
-		request.send();
-
-	}
-
-	function getTimes(jsclass, jstime) {
-
-		this.jsclass = jsclass;
-		this.jstime = jstime;
 
 	}
 
@@ -72,30 +45,20 @@
 
 		var now = new Date();
 
-		console.log(time);
+		var times = [];
 
-		var times = [
-			{
-			  jsclass: 'london',
-			  jstime: moment.tz(now, "Eire")
-			},
-			{
-			  jsclass: 'new-york',
-			  jstime: moment.tz(now, "America/New_York")
-			},
-			{
-			  jsclass: 'paris',
-			  jstime: moment.tz(now, "Europe/Paris")
-			},
-			{
-			  jsclass: 'shanghai',
-			  jstime: moment.tz(now, "Asia/Hong_Kong")
-			},
-			{
-			  jsclass: 'san-fran',
-			  jstime: moment.tz(now, "America/Los_Angeles")
-			}
-		];
+		function newTime(jsclass, jstime) {
+
+			this.jsclass = jsclass;
+			this.jstime = jstime;
+
+		}
+
+		for(i=0; i < jsonData.length; i++) {
+
+			times.push(new newTime(jsonData[i].jsclass, moment.tz(now, jsonData[i].langcode)));
+
+		}
 
 		return times;
 
@@ -297,6 +260,6 @@
 
 	}
 
-	init();
+	//init();
 
 })();
