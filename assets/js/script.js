@@ -29,6 +29,73 @@
 		moveSecondHands();
 		setUpMinuteHands();
 
+		$("#search-input").keyup(function() {
+
+			var searchTerm = $(this).val().toLowerCase();
+
+			document.getElementById('test').innerHTML = '';
+			code = '';
+			var currentLetter = '';
+
+			if (searchTerm>'') {
+
+				$.ajax({
+				    url: 'zones.json',
+				    dataType: 'json',
+				    success: function(response) {
+
+				        jsonData = response;
+
+				        for(i = 0; i < jsonData.length; i++) {
+
+							fName = jsonData[i].name.toLowerCase(); 
+							fNameFLetter = fName.charAt(0);
+
+							if (fName.indexOf(searchTerm) > -1 && fNameFLetter != currentLetter) {
+
+								code += "<li class='time-zones__item' id='" + jsonData[i].id + "'><div class='time-zones__wrapper'><div class='clock " + jsonData[i].id + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + jsonData[i].name + "</h2></div></li>";
+
+								currentLetter = fNameFLetter;
+
+							}
+
+						}
+
+						document.getElementById('test').innerHTML = code;
+
+				        init();
+				    }
+
+				});
+
+			}
+
+			else {
+
+				$.ajax({
+				    url: 'zones.json',
+				    dataType: 'json',
+				    success: function(response) {
+
+				        jsonData = response;
+
+				        for(i = 0; i < jsonData.length; i++) {
+
+							code += "<li class='time-zones__item' id='" + jsonData[i].id + "'><div class='time-zones__wrapper'><div class='clock " + jsonData[i].id + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + jsonData[i].name + "</h2></div></li>";
+
+						}
+
+						document.getElementById('test').innerHTML = code;
+
+				        init();
+				    }
+
+				});
+
+			}
+
+		});
+
 	}
 
 	function internationlTimes() {
@@ -443,6 +510,8 @@
 	function startInternationalClocks() {
 
 		var times = internationlTimes();
+
+		console.log(times.length);
 
 		for (i = 0; i < times.length; i++) {
 
