@@ -1,11 +1,51 @@
 (function () {
 
+	var time = [];
+
 	function init() {
 
+		getData();
 		startInternationalClocks();
-		startLocalClock();
+		//startLocalClock();
 		moveSecondHands();
 		setUpMinuteHands();
+
+	}
+
+	function getData() {
+
+		var request = new XMLHttpRequest();
+
+		request.open('GET', 'zones.json', true);
+
+		request.onload = function() {
+
+		  if (request.status >= 200 && request.status < 400) {
+		    
+			arr = JSON.parse(request.responseText);
+
+		    var code;
+
+		    for(i = 0; i < arr.length; i++) {
+
+		    	code += "<li class='time-zones__item' id='" + arr[i].id + "'><div class='time-zones__wrapper'><div class='clock " + arr[i].jsclass + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + arr[i].name + "</h2></div></li>";
+		    	time.push({jsclass: arr[i].jsclass,jstime: arr[i].jstime});
+
+		    }
+
+		    document.getElementById('test').innerHTML = code;
+
+		  } else {
+		    // We reached our target server, but it returned an error
+
+		  }
+		};
+
+		request.onerror = function() {
+		  // There was a connection error of some sort
+		};
+
+		request.send();
 
 	}
 
@@ -22,6 +62,8 @@
 		]);
 
 		var now = new Date();
+
+		//var times = time;
 
 		var times = [
 			{
@@ -46,6 +88,8 @@
 			}
 		];
 
+		console.log(times);
+
 		return times;
 
 	}
@@ -60,8 +104,6 @@
 			var hours = times[i].jstime.format('h');
 		    var mins = times[i].jstime.format('mm');
 		    var seconds = times[i].jstime.format('s');
-
-		    console.log(ampm, hours, mins, seconds);
 
 			var hands = [
 				{
