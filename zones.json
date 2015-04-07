@@ -2,31 +2,26 @@
 	{
 		"name": "London",
 		"id": "london",
-		"jsclass": "london",
 		"langcode": "Eire"	
 	},
 	{
 		"name": "New York",
 		"id": "new-york",
-		"jsclass": "new-york",
 		"langcode": "America/New_York"
 	},
 	{
 		"name": "Paris",
 		"id": "paris",
-		"jsclass": "paris",
 		"langcode": "Europe/Paris"
 	},
 	{
 		"name": "shanghai",
 		"id": "shanghai",
-		"jsclass": "shanghai",
 		"langcode": "Asia/Hong_Kong"
 	},
 	{
 		"name": "San Francisco",
 		"id": "san-fran",
-		"jsclass": "san-fran",
 		"langcode": "America/Los_Angeles"
 	}
 ]
