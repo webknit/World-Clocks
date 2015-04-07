@@ -1,6 +1,6 @@
 (function () {
 
-	var time = [];
+	time = [];
 
 	function init() {
 
@@ -24,16 +24,18 @@
 		    
 			arr = JSON.parse(request.responseText);
 
-		    var code;
+			time = [];
 
 		    for(i = 0; i < arr.length; i++) {
 
-		    	code += "<li class='time-zones__item' id='" + arr[i].id + "'><div class='time-zones__wrapper'><div class='clock " + arr[i].jsclass + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + arr[i].name + "</h2></div></li>";
+		    	code = "<li class='time-zones__item' id='" + arr[i].id + "'><div class='time-zones__wrapper'><div class='clock " + arr[i].jsclass + "'><div class='clock__container clock__container--hours'><div class='clock__hours'></div></div><div class='clock__container clock__container--mins'><div class='clock__mins'></div></div><div class='clock__container clock__container--seconds'><div class='clock__seconds'></div></div></div><h2 class='time-zones__title'>" + arr[i].name + "</h2></div></li>";
 		    	time.push(new getTimes(arr[i].jsclass, arr[i].jstime));
 
 		    }
 
-		    document.getElementById('test').innerHTML = code;
+		    console.log(time);
+
+		    //document.getElementById('test').innerHTML = code;
 
 		  } else {
 		    // We reached our target server, but it returned an error
@@ -70,7 +72,7 @@
 
 		var now = new Date();
 
-		//console.log(time.jsclass);
+		console.log(time);
 
 		var times = [
 			{
